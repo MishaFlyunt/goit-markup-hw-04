@@ -125,9 +125,9 @@ body {
 	position: relative;
 }
 
-.header-link:is(:hover, :focus)::after {
+.current::after {
 	content: "";
-  display: block;
+	display: block;
 	min-width: 100%;
 	height: 4px;
 
@@ -137,19 +137,10 @@ body {
 
 	background-color: var(--accent-color-2);
 	border-radius: 2px;
-}
-.current::after{
-  content: "";
-  display: block;
-	min-width: 100%;
-	height: 4px;
 
-	position: absolute;
-	bottom: 0;
-	left: 0;
-
-	background-color: var(--accent-color-2);
-	border-radius: 2px;
+	/* transition-property: background-color;
+	transition-duration: 250ms;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); */
 }
 
 .header-contact {
@@ -173,6 +164,10 @@ body {
 .header-link.link:hover,
 .header-link.link:focus {
 	color: var(--accent-color);
+
+	transition-property: background-color;
+	transition-duration: 2s;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .header-link.current {
 	color: var(--accent-color);
@@ -528,6 +523,67 @@ body {
 	background-color: rgb(49, 208, 170);
 }
 
+/* --------------modal--------------- */
+
+.backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(46, 47, 66, 0.4);
+}
+
+.backdrop.is-hidden {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.modal {
+	display: flex;
+	justify-content: flex-end;
+
+	padding: 24px;
+
+	min-width: 408px;
+	min-height: 576px;
+	border-radius: 4px;
+	background-color: #fcfcfc;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.btn-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+
+	background-color: #e7e9fc;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+
+	cursor: pointer;
+
+  color: rgb(0, 0, 0);
+}
+
+.btn-icon:is(:hover,:focus){
+  border: none;
+  background-color: var(--accent-color-2);
+  color: var(--hero-title-text-color);
+}
+
+.modal-icon {
+  fill: currentColor;
+}
+
 /* --------------Page 2------------ */
 
 /* --------------BENEFITS-------------- */
@@ -593,6 +649,28 @@ body {
 .benefits-link:hover {
 	display: block;
 	box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.benefits-thumb {
+	position: relative;
+}
+.benefits-text {
+	width: 100%;
+	padding: 40px 32px 164px;
+
+	color: var(--bg-btn-foot-color);
+	background-color: var(--accent-color);
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	opacity: 0;
+}
+
+.benefits-text:hover {
+	opacity: 0.9;
 }
 
 /* .benefits-item:nth-child(3n) {
